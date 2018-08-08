@@ -2,7 +2,7 @@
 
 reset=$(tput sgr0)
 dim=$(tput dim)
-clearline=$(tput el 1)
+clearline=$(tput el)
 
 bins=$(compgen -c)
 input=""
