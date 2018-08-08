@@ -2,6 +2,7 @@
 
 reset=$(tput sgr0)
 dim=$(tput dim)
+clearline=$(tput el 1)
 
 bins=$(compgen -c)
 input=""
@@ -19,5 +20,5 @@ while true; do
 
     firstrest=${first#"$input"}
 
-    echo -ne "${input}${firstrest}\t\t\t\r"
+    echo -ne "${clearline}${input}${firstrest}\r"
 done
