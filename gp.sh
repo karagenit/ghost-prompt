@@ -11,9 +11,13 @@ while true; do
 
     read -rsn1 char
 
-    # TODO: handle backspace?
-
-    input="${input}${char}"
+    if [[ "$char" == $'\177' ]]
+    then
+        #input=${input::-1}
+        input=${input%?}
+    else
+        input="${input}${char}"
+    fi
 
     matches=$(echo "$bins" | grep "^${input}")
     first=$(echo "$matches" | head -n 1)
