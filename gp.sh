@@ -23,16 +23,22 @@ while true; do
     then
         #input=${input::-1}
         input=${input%?}
-    else
+    elif [[ "$char" != $'\011' ]] # not a tab
+    then
         input="${input}${char}"
     fi
 
     matches=$(echo "$bins" | grep "^${input}")
     first=$(echo "$matches" | head -n 1)
 
-    firstrest=${first#"$input"}
+    if [[ "$char" == $'\011' ]]
+    then
+        input="$first"
+    fi
 
-    echo -ne "${clearline}${input}${dim}${firstrest}${reset}\r"
+    suffix=${first#"$input"}
+
+    echo -ne "${clearline}${input}${dim}${suffix}${reset}\r"
 done
 
 eval $input
