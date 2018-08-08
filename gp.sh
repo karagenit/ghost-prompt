@@ -20,5 +20,5 @@ while true; do
 
     firstrest=${first#"$input"}
 
-    echo -ne "${clearline}${input}${firstrest}\r"
+    echo -ne "${clearline}${input}${dim}${firstrest}${reset}\r"
 done
