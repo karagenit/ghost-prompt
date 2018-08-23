@@ -16,6 +16,7 @@ while true; do
 
     if [[ "$char" == $'\0' ]] # newline - not \012
     then
+        echo "" # line break
         break
     fi
 
