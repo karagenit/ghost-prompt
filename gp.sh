@@ -6,6 +6,8 @@ IFS=''
 reset=$(tput sgr0)
 dim=$(tput dim)
 clearline=$(tput el)
+savepos=$(tput sc)
+loadpos=$(tput rc)
 
 bins=$(compgen -c)
 input=""
@@ -39,7 +41,7 @@ while true; do
 
     suffix=${first#"$input"}
 
-    echo -ne "${clearline}${input}${dim}${suffix}${reset}\r"
+    echo -ne "\r${clearline}${input}${savepos}${dim}${suffix}${reset}${loadpos}"
 done
 
 eval $input
